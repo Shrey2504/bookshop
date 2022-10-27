@@ -59,7 +59,7 @@ export default function SignUp() {
       <div className="flex justify-center flex-wrap items-center px-6 py-12 max-w-6xl mx-auto">
         <div className="md:w-[67%] lg:w-[50%] mb-12 md:mb-6">
           <img
-            src="https://media.istockphoto.com/photos/books-stacked-on-table-at-bookstore-picture-id120004828?k=20&m=120004828&s=612x612&w=0&h=3Id1rv7HDuCY4aOIas4SGK3yJ_3uJoTQPE35B8i3kwE="
+            src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1373&q=80"
             alt="key"
             className="w-full rounded-2xl"
           />
@@ -107,7 +107,7 @@ export default function SignUp() {
               <p className="mb-6">
                 Have a account?
                 <Link
-                  to="/signin"
+                  to="/sign-in"
                   className="text-red-600 hover:text-red-700 transition duration-200 ease-in-out ml-1"
                 >
                   Sign in
