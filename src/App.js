@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import Profile from './Pages/Profile'
 import PrivateRoute from "./Components/PrivateRoute";
 import "react-toastify/dist/ReactToastify.css";
+import Contact from './Pages/Contact'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/signup' element={< Signup />}></Route>
           <Route path='/profile' element={< Profile />}></Route>
           <Route path='/forgot-password' element={< ForgotPassword />}></Route>
+          <Route path='/contactus' element={< Contact />}></Route>
           
         </Routes>
       </Router>

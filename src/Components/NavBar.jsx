@@ -21,7 +21,7 @@ export default function Header() {
     }
   }
   return (
-    <div className="bg-white border-b shadow-sm sticky top-0 z-20">
+    <div className="bg-white border-b shadow-sm sticky top-0  z-20">
       <header className="flex justify-between items-center  max-w-6xl mx-auto">
         <div>
           <img
