@@ -11,6 +11,7 @@ import Profile from './Pages/Profile'
 import PrivateRoute from "./Components/PrivateRoute";
 import "react-toastify/dist/ReactToastify.css";
 import Contact from './Pages/Contact'
+import AddProduct from './Components/AddProduct'
 
 const App = () => {
   return (
@@ -27,6 +28,10 @@ const App = () => {
           <Route path='/profile' element={< Profile />}></Route>
           <Route path='/forgot-password' element={< ForgotPassword />}></Route>
           <Route path='/contactus' element={< Contact />}></Route>
+
+          <Route path="ap" element={<PrivateRoute />}>
+            <Route path="/ap" element={<AddProduct />} />
+          </Route>
           
         </Routes>
       </Router>

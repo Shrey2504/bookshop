@@ -3,7 +3,10 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
-// import { getDatabase } from "firebase/database";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCSw1p1IJVYkqrUlKMaCtt3FPKZM-uBOwA",
   authDomain: "book-shop-b9d42.firebaseapp.com",
@@ -13,6 +16,7 @@ const firebaseConfig = {
   appId: "1:1039901454367:web:91e9b53acc157a9ac0e52a"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 // export const fbDatabase = getDatabase(app);
