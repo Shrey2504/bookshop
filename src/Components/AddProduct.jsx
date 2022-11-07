@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Spinner from "../Components/Spinner";
 import { toast } from "react-toastify";
+import { Fragment } from "react";
+import { Menu, Transition } from "@headlessui/react";
 import {
   getStorage,
   ref,
@@ -20,6 +22,7 @@ export default function AddProduct() {
   const [formData, setFormData] = useState({
     name: "",
     quantity: 1,
+    category: "",
     authorname: "",
     description: "",
     offer: false,
@@ -30,6 +33,7 @@ export default function AddProduct() {
   const {
     name,
     quantity,
+    category,
     authorname,
     description,
     offer,
@@ -170,8 +174,21 @@ export default function AddProduct() {
             />
           </div>
         </div>
+
+
+        <p className="text-lg mt-6 font-semibold">Category of Book</p>
+        <div className="flex space-x-6 mb-6">
+            <select id="category" value={category} onChange={onChange} required className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center">
+                <option>Self Help and Wealth</option>
+                <option>Sprituality</option>
+                <option>Horror</option>
+                <option>Autobiographies</option>
+            </select>
+        </div>
+
+
         
-        
+
         <p className="text-lg mt-6 font-semibold">Author Name</p>
         <textarea
           type="text"

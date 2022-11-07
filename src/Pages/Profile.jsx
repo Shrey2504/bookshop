@@ -58,40 +58,40 @@ export default function Profile() {
       toast.error("Could not update the profile details");
     }
   }
-  useEffect(() => {
-    async function fetchUserListings() {
-      const listingRef = collection(db, "listings");
-      const q = query(
-        listingRef,
-        where("userRef", "==", auth.currentUser.uid),
-        orderBy("timestamp", "desc")
-      );
-      const querySnap = await getDocs(q);
-      let listings = [];
-      querySnap.forEach((doc) => {
-        return listings.push({
-          id: doc.id,
-          data: doc.data(),
-        });
-      });
-      setListings(listings);
-      setLoading(false);
-    }
-    fetchUserListings();
-  }, [auth.currentUser.uid]);
-  async function onDelete(listingID) {
-    if (window.confirm("Are you sure you want to delete?")) {
-      await deleteDoc(doc(db, "listings", listingID));
-      const updatedListings = listings.filter(
-        (listing) => listing.id !== listingID
-      );
-      setListings(updatedListings);
-      toast.success("Successfully deleted the listing");
-    }
-  }
-  function onEdit(listingID) {
-    navigate(`/edit-listing/${listingID}`);
-  }
+  // useEffect(() => {
+  //   async function fetchUserListings() {
+  //     const listingRef = collection(db, "listings");
+  //     const q = query(
+  //       listingRef,
+  //       where("userRef", "==", auth.currentUser.uid),
+  //       orderBy("timestamp", "desc")
+  //     );
+  //     const querySnap = await getDocs(q);
+  //     let listings = [];
+  //     querySnap.forEach((doc) => {
+  //       return listings.push({
+  //         id: doc.id,
+  //         data: doc.data(),
+  //       });
+  //     });
+  //     setListings(listings);
+  //     setLoading(false);
+  //   }
+  //   fetchUserListings();
+  // }, [auth.currentUser.uid]);
+  // async function onDelete(listingID) {
+  //   if (window.confirm("Are you sure you want to delete?")) {
+  //     await deleteDoc(doc(db, "listings", listingID));
+  //     const updatedListings = listings.filter(
+  //       (listing) => listing.id !== listingID
+  //     );
+  //     setListings(updatedListings);
+  //     toast.success("Successfully deleted the listing");
+  //   }
+  // }
+  // function onEdit(listingID) {
+  //   navigate(`/edit-listing/${listingID}`);
+  // }
   return (
     <>
     
