@@ -90,7 +90,7 @@ export default function Profile() {
     }
   }
   function onEdit(listingID) {
-    navigate(`/edit-listing/${listingID}`);
+    navigate(`/eap/${listingID}`);
   }
   return (
     <>

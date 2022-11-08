@@ -14,7 +14,11 @@ import Contact from './Pages/Contact'
 import AddProduct from './Components/AddProduct'
 import Header from './Components/Header'
 import Listing from './Pages/Listing'
+
 import EditListing from './Pages/EditListing'
+
+// import Listing from './Pages/Listing'
+
 
 const App = () => {
   return (
@@ -39,7 +43,6 @@ const App = () => {
           <Route path="ap" element={<PrivateRoute />}>
             <Route path="/ap" element={<AddProduct />} />
           </Route>
-          
           <Route path="eap" element={<PrivateRoute />}>
             <Route path="/eap/:listingId" element={<EditListing />} />
           </Route>
