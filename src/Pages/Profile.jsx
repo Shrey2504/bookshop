@@ -58,45 +58,45 @@ export default function Profile() {
       toast.error("Could not update the profile details");
     }
   }
-  // useEffect(() => {
-  //   async function fetchUserListings() {
-  //     const listingRef = collection(db, "listings");
-  //     const q = query(
-  //       listingRef,
-  //       where("userRef", "==", auth.currentUser.uid),
-  //       orderBy("timestamp", "desc")
-  //     );
-  //     const querySnap = await getDocs(q);
-  //     let listings = [];
-  //     querySnap.forEach((doc) => {
-  //       return listings.push({
-  //         id: doc.id,
-  //         data: doc.data(),
-  //       });
-  //     });
-  //     setListings(listings);
-  //     setLoading(false);
-  //   }
-  //   fetchUserListings();
-  // }, [auth.currentUser.uid]);
-  // async function onDelete(listingID) {
-  //   if (window.confirm("Are you sure you want to delete?")) {
-  //     await deleteDoc(doc(db, "listings", listingID));
-  //     const updatedListings = listings.filter(
-  //       (listing) => listing.id !== listingID
-  //     );
-  //     setListings(updatedListings);
-  //     toast.success("Successfully deleted the listing");
-  //   }
-  // }
-  // function onEdit(listingID) {
-  //   navigate(`/edit-listing/${listingID}`);
-  // }
+  useEffect(() => {
+    async function fetchUserListings() {
+      const listingRef = collection(db, "listings");
+      const q = query(
+        listingRef,
+        where("userRef", "==", auth.currentUser.uid),
+        orderBy("timestamp", "desc")
+      );
+      const querySnap = await getDocs(q);
+      let listings = [];
+      querySnap.forEach((doc) => {
+        return listings.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      });
+      setListings(listings);
+      setLoading(false);
+    }
+    fetchUserListings();
+  }, [auth.currentUser.uid]);
+  async function onDelete(listingID) {
+    if (window.confirm("Are you sure you want to delete?")) {
+      await deleteDoc(doc(db, "listings", listingID));
+      const updatedListings = listings.filter(
+        (listing) => listing.id !== listingID
+      );
+      setListings(updatedListings);
+      toast.success("Successfully deleted the listing");
+    }
+  }
+  function onEdit(listingID) {
+    navigate(`/edit-listing/${listingID}`);
+  }
   return (
     <>
     
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
-        <h1 className="text-6xl text-center mt-6 font-bold">My Profile</h1>
+        <h1 className="text-3xl text-center mt-6 font-bold">My Profile</h1>
         <div className="w-full md:w-[50%] mt-6 px-3">
           <form>
             {/* Name Input */}
@@ -107,7 +107,7 @@ export default function Profile() {
               value={name}
               disabled={!changeDetail}
               onChange={onChange}
-              className={`mb-6 w-full px-4 py-2 text-3xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out ${
+              className={`mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out ${
                 changeDetail && "bg-red-200 focus:bg-red-200"
               }`}
             />
@@ -119,25 +119,25 @@ export default function Profile() {
               id="email"
               value={email}
               disabled
-              className="mb-6 w-full px-4 py-2 text-3xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out"
+              className="mb-6 w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition ease-in-out"
             />
 
             <div className="flex justify-between whitespace-nowrap text-sm sm:text-lg mb-6">
-              <p className="flex items-center  text-2xl">
+              <p className="flex items-center ">
                 Do you want to change your name?
                 <span
                   onClick={() => {
                     changeDetail && onSubmit();
                     setChangeDetail((prevState) => !prevState);
                   }}
-                  className="text-3xl text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer"
+                  className="text-red-600 hover:text-red-700 transition ease-in-out duration-200 ml-1 cursor-pointer"
                 >
                   {changeDetail ? "Apply change" : "Edit"}
                 </span>
               </p>
               <p
                 onClick={onLogout}
-                className="text-3xl text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out cursor-pointer"
+                className="text-blue-600 hover:text-blue-800 transition duration-200 ease-in-out cursor-pointer"
               >
                 Sign out
               </p>

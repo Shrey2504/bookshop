@@ -15,6 +15,8 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
+// Create Listing
+
 export default function AddProduct() {
   const navigate = useNavigate();
   const auth = getAuth();

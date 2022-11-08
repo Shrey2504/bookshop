@@ -1,18 +1,7 @@
-//import React, { useState } from "react";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import "./Nav.css";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaYoutubeSquare,
-} from "react-icons/fa";
-import { GiHamburgerMenu } from "react-icons/gi";
-
-import { NavLink } from "react-router-dom";
-
-const NavBar = () => {
+export default function Header() {
   const [pageState, setPageState] = useState("Signin");
   const location = useLocation();
   const navigate = useNavigate();
@@ -31,73 +20,70 @@ const NavBar = () => {
       return true;
     }
   }
-
-  const [showMediaIcons, setShowMediaIcons] = useState(false);
   return (
-    <>
-      <nav className="main-nav">
-        {/* 1st logo part  */}
-        <div className="logo">
-          <h2>
-            <span>B</span>ook
-            <span>S</span>hop
-          </h2>
+    <div className="bg-white border-b shadow-sm sticky top-0  z-20">
+      <header className="flex justify-between items-center  max-w-6xl mx-auto">
+        <div>
+          <img
+            src="https://rails-assets-us.bookshop.org/assets/logo-a52621fe944d907a0a91448f35b41eca07947302711d35c3322a99144928f1aa.svg"
+            alt="logo"
+            className="h-5 cursor-pointer "
+            // height={450}
+            // width={350}
+            onClick={() => navigate("/")}
+          />
         </div>
-
-        {/* 2nd menu part  */}
-        <div
-          className={
-            showMediaIcons ? "menu-link mobile-menu-link" : "menu-link"
-          }
-        >
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
+        <div className="justify-center">
+          <ul className="flex space-x-10">
+            <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/")}
+            >
+              Home
             </li>
-            {/* <li>
-              <NavLink to="/about">about</NavLink>
-            </li> */}
-            <li>
-              <NavLink to="/Offers">Offers</NavLink>
+            <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/contactus") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/contactus")}
+            >
+              Contact Us
             </li>
-            <li>
-              <NavLink to="/ContactUs">contact</NavLink>
+            <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/ebooks") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/ebooks")}
+            >
+              E-books
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul className="flex space-x-10">
+            <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                (pathMatchRoute("/signin") || pathMatchRoute("/profile")) &&
+                "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/profile")}
+            >
+              {pageState}
             </li>
 
             <li
-                className={`cursor-pointer ${
-                  (pathMatchRoute("/signin") || pathMatchRoute("/profile")) &&
-                  "text-black border-b-red-500"
-                }`}
-                onClick={() => navigate("/profile")}
-              >
-                {pageState}
-              </li>
-
-              <li>
-                <NavLink to="/Offers">Cart</NavLink>
-              </li>
-
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/cart") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/cart")}
+            >
+              Cart
+            </li>
           </ul>
         </div>
-
-        {/* 3rd social media links */}
-        <div className="social-media">
-          
-
-          {/* hamburget menu start  */}
-          <div className="hamburger-menu">
-            <a href="#" onClick={() => setShowMediaIcons(!showMediaIcons)}>
-              <GiHamburgerMenu />
-            </a>
-          </div>
-        </div>
-      </nav>
-
-      
-    </>
+      </header>
+    </div>
   );
-};
-
-
-export default NavBar;
+}
