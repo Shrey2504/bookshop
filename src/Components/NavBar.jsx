@@ -53,11 +53,11 @@ export default function Header() {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/ebooks") && "text-black border-b-red-500"
+                pathMatchRoute("/offers") && "text-black border-b-red-500"
               }`}
-              onClick={() => navigate("/ebooks")}
+              onClick={() => navigate("/offers")}
             >
-              E-books
+              Offers
             </li>
           </ul>
         </div>
