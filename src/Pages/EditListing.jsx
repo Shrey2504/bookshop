@@ -24,7 +24,7 @@ import { useEffect } from "react";
 
 // Create Listing
 
-export default function AddProduct() {
+export default function EditListing() {
   const navigate = useNavigate();
   const auth = getAuth();
   const [loading, setLoading] = useState(false);
