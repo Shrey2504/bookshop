@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Spinner from "../Components/Spinner";
 import { toast } from "react-toastify";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
+// import { Fragment } from "react";
+// import { Menu, Transition } from "@headlessui/react";
 import {
   getStorage,
   ref,
@@ -134,8 +134,6 @@ export default function AddProduct() {
     };
     delete formDataCopy.images;
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
-    delete formDataCopy.latitude;
-    delete formDataCopy.longitude;
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
     setLoading(false);
     toast.success("🥳🥳 Book Added Successfully!! 🥳🥳");

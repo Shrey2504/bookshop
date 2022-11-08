@@ -34,12 +34,14 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
           <div className="flex items-center mt-[10px] space-x-3">
             <div className="flex items-center space-x-1">
               <p className="font-bold text-xs">
+
                 {listing.quantity > 1 ? `${listing.quantity} Quantities` : "1 Quantity"}
               </p>
             </div>
 
           </div>
         
+
       </Link>
       {onDelete && (
         <FaTrash
