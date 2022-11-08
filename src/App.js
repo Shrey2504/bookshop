@@ -13,7 +13,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Contact from './Pages/Contact'
 import AddProduct from './Components/AddProduct'
 import Header from './Components/Header'
-// import Listing from './Pages/Listing'
+import Listing from './Pages/Listing'
+import EditListing from './Pages/EditListing'
 
 const App = () => {
   return (
@@ -31,11 +32,17 @@ const App = () => {
           <Route path='/forgot-password' element={< ForgotPassword />}></Route>
           <Route path='/contactus' element={< Contact />}></Route>
           <Route path='/header' element={< Header />}></Route>
-          
+          <Route
+            path="/category/:categoryName/:listingId"
+            element={<Listing />}
+          />
           <Route path="ap" element={<PrivateRoute />}>
             <Route path="/ap" element={<AddProduct />} />
           </Route>
           
+          <Route path="eap" element={<PrivateRoute />}>
+            <Route path="/eap/:listingId" element={<EditListing />} />
+          </Route>
         </Routes>
       </Router>
       <ToastContainer
