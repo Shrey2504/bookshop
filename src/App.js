@@ -16,6 +16,7 @@ import Header from './Components/Header'
 import Listing from './Pages/Listing'
 
 import EditListing from './Pages/EditListing'
+import Offers from './Pages/Offers'
 
 // import Listing from './Pages/Listing'
 
@@ -40,6 +41,7 @@ const App = () => {
             path="/category/:categoryName/:listingId"
             element={<Listing />}
           />
+          <Route path="/offers" element={<Offers />} />
           <Route path="ap" element={<PrivateRoute />}>
             <Route path="/ap" element={<AddProduct />} />
           </Route>
