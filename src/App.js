@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Contact from './Pages/Contact'
 import AddProduct from './Components/AddProduct'
 import Header from './Components/Header'
+// import Listing from './Pages/Listing'
 
 const App = () => {
   return (
@@ -30,7 +31,7 @@ const App = () => {
           <Route path='/forgot-password' element={< ForgotPassword />}></Route>
           <Route path='/contactus' element={< Contact />}></Route>
           <Route path='/header' element={< Header />}></Route>
-
+          
           <Route path="ap" element={<PrivateRoute />}>
             <Route path="/ap" element={<AddProduct />} />
           </Route>

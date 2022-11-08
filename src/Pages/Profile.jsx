@@ -13,9 +13,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
-
+import { FcHome } from "react-icons/fc";
 import { useEffect } from "react";
-
+import ListingItem from "../Components/ListingItem";
 
 export default function Profile() {
   const auth = getAuth();
@@ -94,7 +94,6 @@ export default function Profile() {
   }
   return (
     <>
-    
       <section className="max-w-6xl mx-auto flex justify-center items-center flex-col">
         <h1 className="text-3xl text-center mt-6 font-bold">My Profile</h1>
         <div className="w-full md:w-[50%] mt-6 px-3">
@@ -143,21 +142,21 @@ export default function Profile() {
               </p>
             </div>
           </form>
-          {/* <button
+          <button
             type="submit"
             className="w-full bg-blue-600 text-white uppercase px-7 py-3 text-sm font-medium rounded shadow-md hover:bg-blue-700 transition duration-150 ease-in-out hover:shadow-lg active:bg-blue-800"
           >
             <Link
-              to="/create-listing"
+              to="/ap"
               className="flex justify-center items-center"
             >
               <FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />
-              Buy Books
+              Sell or rent your home
             </Link>
-          </button> */}
+          </button>
         </div>
       </section>
-      {/* <div className="max-w-6xl px-3 mt-6 mx-auto">
+      <div className="max-w-6xl px-3 mt-6 mx-auto">
         {!loading && listings.length > 0 && (
           <>
             <h2 className="text-2xl text-center font-semibold mb-6">
@@ -176,7 +175,7 @@ export default function Profile() {
             </ul>
           </>
         )}
-      </div> */}
+      </div>
     </>
   );
 }
