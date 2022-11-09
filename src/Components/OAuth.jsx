@@ -31,6 +31,8 @@ export default function OAuth() {
       toast.error("Could not authorize with Google");
     }
   }
+
+  
   return (
     <button
       type="button"

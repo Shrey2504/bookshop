@@ -13,7 +13,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
-import { FcHome } from "react-icons/fc";
+import { GiBookshelf } from "react-icons/gi";
 import { useEffect } from "react";
 import ListingItem from "../Components/ListingItem";
 
@@ -150,8 +150,8 @@ export default function Profile() {
               to="/ap"
               className="flex justify-center items-center"
             >
-              <FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />
-              Sell or rent your home
+              <GiBookshelf className="mr-2 text-3xl bg-black rounded-full p-1 border-2" />
+              ADD BOOKS
             </Link>
           </button>
         </div>

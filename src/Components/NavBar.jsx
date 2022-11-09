@@ -26,7 +26,7 @@ export default function Header() {
         <div>
           <img
             src="https://rails-assets-us.bookshop.org/assets/logo-a52621fe944d907a0a91448f35b41eca07947302711d35c3322a99144928f1aa.svg"
-            alt="logo"
+            // alt="logo"
             className="h-5 cursor-pointer "
             // height={450}
             // width={350}

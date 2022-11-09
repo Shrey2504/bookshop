@@ -137,7 +137,7 @@ export default function AddProduct() {
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
     setLoading(false);
     toast.success("🥳🥳 Book Added Successfully!! 🥳🥳");
-    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
+    navigate(`/category/${formDataCopy.category}/${docRef.id}`);
   }
 
   if (loading) {

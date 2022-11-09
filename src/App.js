@@ -17,6 +17,7 @@ import Listing from './Pages/Listing'
 
 import EditListing from './Pages/EditListing'
 import Offers from './Pages/Offers'
+import Category from './Pages/Category'
 
 // import Listing from './Pages/Listing'
 
@@ -40,6 +41,10 @@ const App = () => {
           <Route
             path="/category/:categoryName/:listingId"
             element={<Listing />}
+          />
+          <Route
+            path="/category/:categoryName"
+            element={<Category />}
           />
           <Route path="/offers" element={<Offers />} />
           <Route path="ap" element={<PrivateRoute />}>

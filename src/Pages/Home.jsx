@@ -1,18 +1,3 @@
-// import React from 'react'
-// import Slider from '../Components/Slider'
-
-
-// const Home = () => {
-//   return (
-//     <div>
-//       <Slider/>
-
-//     </div>
-//   )
-// }
-
-// export default Home
-
 import {
   collection,
   getDoc,
@@ -60,8 +45,8 @@ export default function Home() {
     }
     fetchListings();
   }, []);
-  // Places for rent
-  const [rentListings, setRentListings] = useState(null);
+  // Horror
+  const [HorrorListings, setHorrorListings] = useState(null);
   useEffect(() => {
     async function fetchListings() {
       try {
@@ -83,15 +68,15 @@ export default function Home() {
             data: doc.data(),
           });
         });
-        setRentListings(listings);
+        setHorrorListings(listings);
       } catch (error) {
         console.log(error);
       }
     }
     fetchListings();
   }, []);
-  // Places for rent
-  const [saleListings, setSaleListings] = useState(null);
+  //
+  const [SHWListings, setSHWListings] = useState(null);
   useEffect(() => {
     async function fetchListings() {
       try {
@@ -100,7 +85,67 @@ export default function Home() {
         // create the query
         const q = query(
           listingsRef,
-          where("Category", "==", "autobiographies"),
+          where("category", "==", "Self Help and Wealth"),
+          orderBy("timestamp", "desc"),
+          limit(4)
+        );
+        // execute the query
+        const querySnap = await getDocs(q);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setSHWListings(listings);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchListings();
+  }, []);
+  // Autobiographies
+  const [AutobiographyListings, setAutobiographyListings] = useState(null);
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        // get reference
+        const listingsRef = collection(db, "listings");
+        // create the query
+        const q = query(
+          listingsRef,
+          where("category", "==", "Autobiographies"),
+          orderBy("timestamp", "desc"),
+          limit(4)
+        );
+        // execute the query
+        const querySnap = await getDocs(q);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setAutobiographyListings(listings);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchListings();
+  }, []);
+  // Sprituality books
+  const [SpiritualListings, setSaleListings] = useState(null);
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        // get reference
+        const listingsRef = collection(db, "listings");
+        // create the query
+        const q = query(
+          listingsRef,
+          where("category", "==", "Sprituality"),
           orderBy("timestamp", "desc"),
           limit(4)
         );
@@ -143,16 +188,16 @@ export default function Home() {
             </ul>
           </div>
         )}
-        {rentListings && rentListings.length > 0 && (
+        {HorrorListings && HorrorListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Places for rent</h2>
-            <Link to="/category/rent">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Horror Books</h2>
+            <Link to="/category/Horror">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
                 Show more books in this category
               </p>
             </Link>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-              {rentListings.map((listing) => (
+              {HorrorListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
                   listing={listing.data}
@@ -162,16 +207,37 @@ export default function Home() {
             </ul>
           </div>
         )}
-        {saleListings && saleListings.length > 0 && (
+        {AutobiographyListings && AutobiographyListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Places for sale</h2>
-            <Link to="/category/sale">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">
+              Autobiography Books
+            </h2>
+            <Link to="/category/Autobiography">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Show more places for sale
+                Show more books in this category
               </p>
             </Link>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-              {saleListings.map((listing) => (
+              {AutobiographyListings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
+        {SpiritualListings && SpiritualListings.length > 0 && (
+          <div className="m-2 mb-6">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Spiritual</h2>
+            <Link to="/category/Sprituality">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+                Show more books in this category
+              </p>
+            </Link>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+              {SpiritualListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
                   listing={listing.data}
