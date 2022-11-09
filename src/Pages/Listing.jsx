@@ -66,18 +66,7 @@ export default function Listing() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div
-        className="fixed top-[13%] right-[3%] z-10 bg-white cursor-pointer border-2 border-gray-400 rounded-full w-12 h-12 flex justify-center items-center"
-        onClick={() => {
-          navigator.clipboard.writeText(window.location.href);
-          setShareLinkCopied(true);
-          setTimeout(() => {
-            setShareLinkCopied(false);
-          }, 2000);
-        }}
-      >
-        <FaShare className="text-lg text-slate-500" />
-      </div>
+      
       {shareLinkCopied && (
         <p className="fixed top-[23%] right-[5%] font-semibold border-2 border-gray-400 rounded-md bg-white z-10 p-2">
           Link Copied
@@ -98,7 +87,7 @@ export default function Listing() {
             {/* {listing.category === "rent" ? " / month" : ""} */}
           </p>
           <p className="flex items-center mt-6 mb-3 font-semibold">
-            <FaMapMarkerAlt className="text-green-700 mr-1" />
+            
             {listing.address}
           </p>
           <div className="flex justify-start items-center space-x-4 w-[75%]">

@@ -188,6 +188,25 @@ export default function Home() {
             </ul>
           </div>
         )}
+        {SHWListings && SHWListings.length > 0 && (
+          <div className="m-2 mb-6">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Self Heath abs Wealth</h2>
+            <Link to="/category/Self Help and Wealth">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+              Show more books in this category
+              </p>
+            </Link>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+              {SHWListings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
         {HorrorListings && HorrorListings.length > 0 && (
           <div className="m-2 mb-6">
             <h2 className="px-3 text-2xl mt-6 font-semibold">Horror Books</h2>
@@ -212,7 +231,7 @@ export default function Home() {
             <h2 className="px-3 text-2xl mt-6 font-semibold">
               Autobiography Books
             </h2>
-            <Link to="/category/Autobiography">
+            <Link to="/category/Autobiographies">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
                 Show more books in this category
               </p>
