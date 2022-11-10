@@ -190,7 +190,7 @@ export default function Home() {
         )}
         {SHWListings && SHWListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Self Heath abs Wealth</h2>
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Self Heath & Wealth</h2>
             <Link to="/category/Self Help and Wealth">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
               Show more books in this category
