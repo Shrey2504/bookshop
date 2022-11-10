@@ -334,6 +334,7 @@ export default function Home() {
             </ul>
           </div>
         )}
+
         {SHWListings && SHWListings.length > 0 && (
           <div className="m-2 mb-6">
             <h2 className="px-3 text-2xl mt-6 font-semibold">Self Heath and Wealth</h2>
@@ -344,6 +345,25 @@ export default function Home() {
             </Link>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
               {SHWListings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
+                        {SpiritualListings && SpiritualListings.length > 0 && (
+          <div className="m-2 mb-6">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Spiritual</h2>
+            <Link to="/category/Sprituality">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+                Show more books in this category
+              </p>
+            </Link>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+              {SpiritualListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
                   listing={listing.data}
@@ -393,25 +413,7 @@ export default function Home() {
             </ul>
           </div>
         )}
-        {SpiritualListings && SpiritualListings.length > 0 && (
-          <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Spiritual</h2>
-            <Link to="/category/Sprituality">
-              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-                Show more books in this category
-              </p>
-            </Link>
-            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-              {SpiritualListings.map((listing) => (
-                <ListingItem
-                  key={listing.id}
-                  listing={listing.data}
-                  id={listing.id}
-                />
-              ))}
-            </ul>
-          </div>
-        )}
+
       </div>
     </div>
   );
