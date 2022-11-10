@@ -1,12 +1,9 @@
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
-import { MdLocationOn } from "react-icons/md";
-import { GiWhiteBook } from "react-icons/gi";
+import { FaTrash } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 export default function ListingItem({ listing, id, onEdit, onDelete }) {
   return (
-    <>
-  
     <li className="relative bg-white flex flex-col justify-between items-center shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-150 m-[10px]">
       <Link className="contents" to={`/category/${listing.name}/${id}`}>
         <img
@@ -21,34 +18,40 @@ export default function ListingItem({ listing, id, onEdit, onDelete }) {
           {listing.timestamp?.toDate()}
         </Moment>
 
-          <p className="font-semibold m-0 text-xl truncate">{listing.name}</p>
-          <p className="text-[#457b9d] mt-2 text-xl font-semibold">
-          ₹
-            {listing.offer
-              ? listing.discountedPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-              : listing.regularPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            {listing.type === "rent" && " / month"}
-          </p>
-          <div className="flex items-center mt-[10px] space-x-3">
-            <div className="flex items-center space-x-1">
-              <p className="font-bold text-l">
-              <li className="flex items-center whitespace-nowrap">
-              <GiWhiteBook className="text-l" />
-                {listing.quantity > 1 ? `${listing.quantity} Books`  : " 1 Book"} 
-                </li>
-              </p>
-            </div>
-
+        <p className="font-semibold m-0 text-xl truncate">{listing.name}</p>
+        <p className="text-[#457b9d] mt-2 font-semibold">
+          $
+          {listing.offer
+            ? listing.discountedPrice
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            : listing.regularPrice
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          {listing.type === "rent" && " / month"}
+        </p>
+        <div className="flex items-center mt-[10px] space-x-3">
+          <div className="flex items-center space-x-1">
+            <p className="font-bold text-xs">
+              {listing.quantity > 1
+                ? `${listing.quantity} Quantities`
+                : "1 Quantity"}
+            </p>
           </div>
-        
-
+        </div>
       </Link>
-      
+      {onDelete && (
+        <FaTrash
+          className="absolute bottom-2 right-2 h-[14px] cursor-pointer text-red-500"
+          onClick={() => onDelete(listing.id)}
+        />
+      )}
+      {onEdit && (
+        <MdEdit
+          className="absolute bottom-2 right-7 h-4 cursor-pointer "
+          onClick={() => onEdit(listing.id)}
+        />
+      )}
     </li>
-    </>
   );
 }
