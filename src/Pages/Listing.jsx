@@ -47,7 +47,7 @@ export default function Listing() {
   return (
     <>
     <main>
-    <div class="grid grid-flow-row-max gap-x-15 gap-y-4 grid-cols-3 grid-rows-max  pr-2 pl-2 pt-10 ">
+    <div class="grid grid-flow-row-max gap-x-15 gap-y-4 grid-cols-3 grid-rows-max  pr-2 pl-2  ">
     <div class="col-span-2">
       <Swiper
         slidesPerView={1}
@@ -62,7 +62,11 @@ export default function Listing() {
             <div
               className=" rounded-lg border-solid border-2 border-rose-500 relative w-full overflow-hidden h-[600px] "
               style={{
+<<<<<<< HEAD
                 background: `url(${listing.imgUrls[index]})  no-repeat`,
+=======
+                background: `url(${listing.imgUrls[index]}) no-repeat`,
+>>>>>>> 0b1ada0e17ad38412a3863a0cfe2b3f23dfaba2f
                 backgroundSize: "cover",
               }}
             ></div>

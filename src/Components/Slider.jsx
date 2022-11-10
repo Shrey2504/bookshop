@@ -59,7 +59,11 @@ export default function Slider() {
             >
               <div
                 style={{
+<<<<<<< HEAD
                   background: `url(${data.imgUrls[0]})  ,no-repeat`,
+=======
+                  background: `url(${data.imgUrls[0]}) no-repeat`,
+>>>>>>> 0b1ada0e17ad38412a3863a0cfe2b3f23dfaba2f
                   backgroundSize: "cover",
                 }}
                 className="relative w-full h-[700px] overflow-hidden"
