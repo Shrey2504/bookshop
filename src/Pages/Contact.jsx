@@ -2,11 +2,13 @@ import React from "react";
 import "../index.css";
 import { db } from "../firebase";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { addDoc, collection } from "firebase/firestore";
 // import { doc, setDoc } from "firebase/firestore";
 const Contact = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
+  
   const [subject, setSubject] = useState();
   const [message, setMessage] = useState();
   
@@ -19,11 +21,12 @@ const Contact = () => {
       subject: subject,
       message: message,
     })
-      .then(() => {
-        if (!alert("Form Submitted Successfully!!!")) document.location = "./";
-      })
+      .then(() => { 
+        if (! toast.success("🥳🥳Submitted Successfully!! 🥳🥳")); 
+        document.location = "./";
+      },[10000])
       .catch((error) => {
-        alert(error.message);
+        toast.error("Not Submitted,          TRY AGAIN!!!!");
       });
   };
   
@@ -44,6 +47,7 @@ const Contact = () => {
                 for="name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900"
                 name="Your Name"
+
               >
                 Your Name
               </label>

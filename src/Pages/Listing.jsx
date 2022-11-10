@@ -62,7 +62,9 @@ export default function Listing() {
             <div
               className=" rounded-lg border-solid border-2 border-rose-500 relative w-full overflow-hidden h-[600px] "
               style={{
+
                 background: `url(${listing.imgUrls[index]}) no-repeat`,
+
                 backgroundSize: "cover",
               }}
             ></div>

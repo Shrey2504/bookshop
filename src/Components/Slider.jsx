@@ -59,10 +59,11 @@ export default function Slider() {
             >
               <div
                 style={{
-                  background: `url(${data.imgUrls[0]}) no-repeat`,
+                  background: `url(${data.imgUrls[0]})  ,no-repeat`,
+
                   backgroundSize: "cover",
                 }}
-                className="relative w-full h-[550px] overflow-hidden"
+                className="relative w-full h-[700px] overflow-hidden"
               ></div>
               <p className="text-[#f1faee] absolute left-1 top-3 font-medium max-w-[90%] bg-[#457b9d] shadow-lg opacity-90 p-2 rounded-br-3xl">
                 {data.name}

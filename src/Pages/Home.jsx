@@ -75,6 +75,65 @@ export default function Home() {
     }
     fetchListings();
   }, []);
+  const [DataScienceListings, setDSListings] = useState(null);
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        // get reference
+        const listingsRef = collection(db, "listings");
+        // create the query
+        const q = query(
+          listingsRef,
+          where("category", "==", "Data Science books for beginners"),
+          orderBy("timestamp", "desc"),
+          limit(4)
+        );
+        // execute the query
+        const querySnap = await getDocs(q);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setDSListings(listings);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchListings();
+  }, []);
+  // Top20 books in India
+  const [Top20Listings, setTop20Listings] = useState(null);
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        // get reference
+        const listingsRef = collection(db, "listings");
+        // create the query
+        const q = query(
+          listingsRef,
+          where("category", "==", "Top 20 books to read in India"),
+          orderBy("timestamp", "desc"),
+          limit(4)
+        );
+        // execute the query
+        const querySnap = await getDocs(q);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setTop20Listings(listings);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchListings();
+  }, []);
   //
   const [SHWListings, setSHWListings] = useState(null);
   useEffect(() => {
@@ -99,6 +158,36 @@ export default function Home() {
           });
         });
         setSHWListings(listings);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchListings();
+  }, []);
+  //
+  const [ScienceLover, setScienceLoverListings] = useState(null);
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        // get reference
+        const listingsRef = collection(db, "listings");
+        // create the query
+        const q = query(
+          listingsRef,
+          where("category", "==", "Books for Science lover"),
+          orderBy("timestamp", "desc"),
+          limit(4)
+        );
+        // execute the query
+        const querySnap = await getDocs(q);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setScienceLoverListings(listings);
       } catch (error) {
         console.log(error);
       }
@@ -188,9 +277,66 @@ export default function Home() {
             </ul>
           </div>
         )}
+        {Top20Listings && Top20Listings.length > 0 && (
+          <div className="m-2 mb-6">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Top 20 books to read in India</h2>
+            <Link to="/offers">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+                Show more offers
+              </p>
+            </Link>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+              {Top20Listings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
+        {ScienceLover && ScienceLover.length > 0 && (
+          <div className="m-2 mb-6">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Books for Science lover</h2>
+            <Link to="/offers">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+                Show more offers
+              </p>
+            </Link>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+              {ScienceLover.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
+        {DataScienceListings && DataScienceListings.length > 0 && (
+          <div className="m-2 mb-6">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Books for Science lover</h2>
+            <Link to="/offers">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+                Show more offers
+              </p>
+            </Link>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+              {DataScienceListings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
         {SHWListings && SHWListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Self Heath abs Wealth</h2>
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Self Heath and Wealth</h2>
             <Link to="/category/Self Help and Wealth">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
               Show more books in this category
