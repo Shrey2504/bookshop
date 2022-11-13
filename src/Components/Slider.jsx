@@ -20,7 +20,7 @@ export default function Slider() {
   useEffect(() => {
     async function fetchListings() {
       const listingsRef = collection(db, "listings");
-      const q = query(listingsRef, orderBy("timestamp", "desc"), limit(5));
+      const q = query(listingsRef, orderBy("timestamp", "desc"), limit(20));
       const querySnap = await getDocs(q);
       let listings = [];
       querySnap.forEach((doc) => {
@@ -70,7 +70,7 @@ export default function Slider() {
               </p>
               <p className="text-[#f1faee] absolute left-1 bottom-1 font-semibold max-w-[90%] bg-[#e63946] shadow-lg opacity-90 p-2 rounded-tr-3xl">
               ₹{data.discountedPrice ?? data.regularPrice}
-                {data.type === "rent" && " / month"}
+                
               </p>
             </SwiperSlide>
           ))}

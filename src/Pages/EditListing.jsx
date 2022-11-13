@@ -220,6 +220,9 @@ export default function EditListing() {
                 <option>Sprituality</option>
                 <option>Horror</option>
                 <option>Autobiographies</option>
+                <option>Top 20 books to read in India</option>
+                <option>Books for Science lover</option>
+                <option>Data Science books for beginners</option>
             </select>
         </div>
 

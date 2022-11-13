@@ -14,14 +14,9 @@ import SwiperCore, {
 import "swiper/css/bundle";
 import {
   FaShare,
-  FaMapMarkerAlt,
   FaBook,
-  FaBath,
-  FaParking,
-  FaChair,
 } from "react-icons/fa";
 import { getAuth } from "firebase/auth";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 export default function Listing() {
   const auth = getAuth();
@@ -52,7 +47,7 @@ export default function Listing() {
       <Swiper
         slidesPerView={1}
         navigation
-        pagination={{ type: "progressbar" }}
+        // pagination={{ type: "progressbar" }}
         effect="fade"
         modules={[EffectFade]}
         autoplay={{ delay: 3000 }}
@@ -60,7 +55,7 @@ export default function Listing() {
         {listing.imgUrls.map((url, index) => (
           <SwiperSlide key={index}>
             <div
-              className=" rounded-lg border-solid border-2 border-rose-500 relative w-full overflow-hidden h-[600px] "
+              className=" rounded-lg border-solid border-2 border-rose-500 relative w-full overflow-hidden h-[800px] "
               style={{
 
                 background: `url(${listing.imgUrls[index]}) no-repeat`,
