@@ -75,6 +75,37 @@ export default function Home() {
     }
     fetchListings();
   }, []);
+  // CyberSecurity
+  const [CyberListings, setCyberListings] = useState(null);
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        // get reference
+        const listingsRef = collection(db, "listings");
+        // create the query
+        const q = query(
+          listingsRef,
+          where("category", "==", "Books for Cyber Security"),
+          orderBy("timestamp", "desc"),
+          limit(4)
+        );
+        // execute the query
+        const querySnap = await getDocs(q);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setCyberListings(listings);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchListings();
+  }, []);
+  // Data Science
   const [DataScienceListings, setDSListings] = useState(null);
   useEffect(() => {
     async function fetchListings() {
@@ -254,6 +285,36 @@ export default function Home() {
     }
     fetchListings();
   }, []);
+  // Sprituality books
+  const [PsychologyListings, setPsychologyListings] = useState(null);
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        // get reference
+        const listingsRef = collection(db, "listings");
+        // create the query
+        const q = query(
+          listingsRef,
+          where("category", "==", "Psychology Books"),
+          orderBy("timestamp", "desc"),
+          limit(4)
+        );
+        // execute the query
+        const querySnap = await getDocs(q);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          });
+        });
+        setPsychologyListings(listings);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchListings();
+  }, []);
   return (
     <div>
       <Slider />
@@ -296,6 +357,25 @@ export default function Home() {
             </ul>
           </div>
         )}
+        {CyberListings && CyberListings.length > 0 && (
+          <div className="m-2 mb-6">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Books for Cyber Security</h2>
+            <Link to="/offers">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+                Show more offers
+              </p>
+            </Link>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+              {CyberListings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
         {ScienceLover && ScienceLover.length > 0 && (
           <div className="m-2 mb-6">
             <h2 className="px-3 text-2xl mt-6 font-semibold">Books for Science lover</h2>
@@ -317,7 +397,7 @@ export default function Home() {
         )}
         {DataScienceListings && DataScienceListings.length > 0 && (
           <div className="m-2 mb-6">
-            <h2 className="px-3 text-2xl mt-6 font-semibold">Books for Science lover</h2>
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Books for Data Science</h2>
             <Link to="/offers">
               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
                 Show more offers
@@ -363,6 +443,25 @@ export default function Home() {
             </Link>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
               {HorrorListings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  listing={listing.data}
+                  id={listing.id}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
+        {PsychologyListings && PsychologyListings.length > 0 && (
+          <div className="m-2 mb-6">
+            <h2 className="px-3 text-2xl mt-6 font-semibold">Psychology Books</h2>
+            <Link to="/category/Horror">
+              <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
+                Show more books in this category
+              </p>
+            </Link>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+              {PsychologyListings.map((listing) => (
                 <ListingItem
                   key={listing.id}
                   listing={listing.data}
