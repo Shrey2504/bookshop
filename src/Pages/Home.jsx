@@ -315,7 +315,13 @@ export default function Home() {
     }
     fetchListings();
   }, []);
-  return (
+
+
+
+// Adding Product to cart
+  
+
+    return (
     <div>
       <Slider />
       <div className="max-w-6xl mx-auto pt-4 space-y-6">
@@ -353,8 +359,11 @@ export default function Home() {
                   listing={listing.data}
                   id={listing.id}
                 />
+                
               ))}
+              
             </ul>
+            
           </div>
         )}
         {CyberListings && CyberListings.length > 0 && (

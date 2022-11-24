@@ -18,6 +18,7 @@ import Listing from './Pages/Listing'
 import EditListing from './Pages/EditListing'
 import Offers from './Pages/Offers'
 import Category from './Pages/Category'
+import Cart from './Pages/Cart'
 
 // import Listing from './Pages/Listing'
 
@@ -37,6 +38,7 @@ const App = () => {
           <Route path='/profile' element={< Profile />}></Route>
           <Route path='/forgot-password' element={< ForgotPassword />}></Route>
           <Route path='/contactus' element={< Contact />}></Route>
+          <Route path='/cart' element={< Cart />}></Route>
           
           <Route
             path="/category/:categoryName/:listingId"
