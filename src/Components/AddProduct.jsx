@@ -79,7 +79,7 @@ export default function AddProduct() {
       toast.error("maximum 6 images are allowed");
       return;
     }
-    
+
     async function storeImage(image) {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
@@ -175,19 +175,26 @@ export default function AddProduct() {
           </div>
         </div>
 
-
         <p className="text-lg mt-6 font-semibold">Category of Book</p>
         <div className="flex space-x-6 mb-6">
-            <select id="category" value={category} onChange={onChange}  required className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center">
-                <option >Self Help and Wealth</option>
-                <option>Sprituality</option>
-                <option>Horror</option>
-                <option>Autobiographies</option>
-            </select>
+          <select
+            id="category"
+            value={category}
+            onChange={onChange}
+            required
+            className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
+          >
+            <option>Self Help and Wealth</option>
+            <option>Sprituality</option>
+            <option>Horror</option>
+            <option>Autobiographies</option>
+            <option>Top 20 books to read in India</option>
+            <option>Books for Science lover</option>
+            <option>Data Science books for beginners</option>
+            <option>Books for Cyber Security</option>
+            <option>Psychology Books</option>
+          </select>
         </div>
-
-
-        
 
         <p className="text-lg mt-6 font-semibold">Author Name</p>
         <textarea
@@ -248,7 +255,6 @@ export default function AddProduct() {
                 required
                 className="w-full px-4 py-2 text-xl text-gray-700 bg-white border border-gray-300 rounded transition duration-150 ease-in-out focus:text-gray-700 focus:bg-white focus:border-slate-600 text-center"
               />
-              
             </div>
           </div>
         </div>

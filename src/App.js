@@ -13,13 +13,15 @@ import PrivateRoute from "./Components/PrivateRoute";
 import "react-toastify/dist/ReactToastify.css";
 import Contact from './Pages/Contact'
 import AddProduct from './Components/AddProduct'
-
 import Listing from './Pages/Listing'
-
 import EditListing from './Pages/EditListing'
 import Offers from './Pages/Offers'
 import Category from './Pages/Category'
+
 import Payment from './Components/Payment'
+
+import Cart from './Pages/Cart'
+
 
 // import Listing from './Pages/Listing'
 
@@ -38,8 +40,12 @@ const App = () => {
           <Route path='/signup' element={< Signup />}></Route>
           <Route path='/profile' element={< Profile />}></Route>
           <Route path='/forgot-password' element={< ForgotPassword />}></Route>
-          <Route path='/Contact' element={< Contact />}></Route>
+
+
           <Route path='/payment' element={< Payment />}></Route>
+
+          <Route path='/contactus' element={< Contact />}></Route>
+          <Route path='/cart' element={< Cart />}></Route>
           
           <Route
             path="/category/:categoryName/:listingId"

@@ -66,14 +66,17 @@ export default function Slider() {
                   alignContent:"center",
                   backgroundSize: "cover",
                 }}
-                className="relative ml-[300px]    w-[1000px] h-[1800px] mr-1000 overflow-hidden"
+
+                
+
+                className="relative w-full h-[900px] overflow-hidden"
+
               ></div>
               <p className="text-[#f1faee] absolute left-1 top-3 font-medium max-w-[90%] bg-[#457b9d] shadow-lg opacity-90 p-2 rounded-br-3xl">
                 {data.name}
               </p>
               <p className="text-[#f1faee] absolute left-1 bottom-1 font-semibold max-w-[90%] bg-[#e63946] shadow-lg opacity-90 p-2 rounded-tr-3xl">
               ₹{data.discountedPrice ?? data.regularPrice}
-                
               </p>
             </SwiperSlide>
           ))}
