@@ -12,6 +12,7 @@ import SwiperCore, {
 } from "swiper";
 import "swiper/css/bundle";
 import { useNavigate } from "react-router-dom";
+
 export default function Slider() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -45,25 +46,27 @@ export default function Slider() {
     listings && (
       <>
         <Swiper
-          slidesPerView={1}
+      slidesPerView={2}
           navigation
+          
           pagination={{ type: "progressbar" }}
           effect="fade"
           modules={[EffectFade]}
           autoplay={{ delay: 3000 }}
         >
           {listings.map(({ data, id }) => (
-            <SwiperSlide
+            <SwiperSlide 
               key={id}
               onClick={() => navigate(`/category/${data.category}/${id}`)}
             >
               <div
                 style={{
+                   
                   background: `url(${data.imgUrls[0]})  ,no-repeat`,
-
+                  alignContent:"center",
                   backgroundSize: "cover",
                 }}
-                className="relative w-full h-[700px] overflow-hidden"
+                className="relative ml-[300px]    w-[1000px] h-[1800px] mr-1000 overflow-hidden"
               ></div>
               <p className="text-[#f1faee] absolute left-1 top-3 font-medium max-w-[90%] bg-[#457b9d] shadow-lg opacity-90 p-2 rounded-br-3xl">
                 {data.name}

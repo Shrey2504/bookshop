@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './index.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from  './Pages/Home'
@@ -18,6 +19,7 @@ import Listing from './Pages/Listing'
 import EditListing from './Pages/EditListing'
 import Offers from './Pages/Offers'
 import Category from './Pages/Category'
+import Payment from './Components/Payment'
 
 // import Listing from './Pages/Listing'
 
@@ -36,7 +38,8 @@ const App = () => {
           <Route path='/signup' element={< Signup />}></Route>
           <Route path='/profile' element={< Profile />}></Route>
           <Route path='/forgot-password' element={< ForgotPassword />}></Route>
-          <Route path='/contactus' element={< Contact />}></Route>
+          <Route path='/Contact' element={< Contact />}></Route>
+          <Route path='/payment' element={< Payment />}></Route>
           
           <Route
             path="/category/:categoryName/:listingId"
@@ -46,12 +49,14 @@ const App = () => {
             path="/category/:categoryName"
             element={<Category />}
           />
-          <Route path="/offers" element={<Offers />} />
+          <Route path="/offers" element={<Offers />}/>
           <Route path="ap" element={<PrivateRoute />}>
             <Route path="/ap" element={<AddProduct />} />
+           
           </Route>
           <Route path="eap" element={<PrivateRoute />}>
             <Route path="/eap/:listingId" element={<EditListing />} />
+            
           </Route>
         </Routes>
       </Router>
