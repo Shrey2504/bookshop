@@ -12,9 +12,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import "react-toastify/dist/ReactToastify.css";
 import Contact from './Pages/Contact'
 import AddProduct from './Components/AddProduct'
-
 import Listing from './Pages/Listing'
-
 import EditListing from './Pages/EditListing'
 import Offers from './Pages/Offers'
 import Category from './Pages/Category'
