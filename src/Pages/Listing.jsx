@@ -15,6 +15,7 @@ import "swiper/css/bundle";
 import {
   FaShare,
   FaBook,
+  FaShoppingCart,
 } from "react-icons/fa";
 import { getAuth } from "firebase/auth";
 

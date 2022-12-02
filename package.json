@@ -5,6 +5,8 @@
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@material-tailwind/react": "^1.2.4",
+    "@syncfusion/ej2-base": "^20.3.56",
+    "@syncfusion/ej2-react-buttons": "^20.3.58",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

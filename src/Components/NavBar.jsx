@@ -5,7 +5,15 @@ export default function Header() {
   const [pageState, setPageState] = useState("Signin");
   const location = useLocation();
   const navigate = useNavigate();
+  const [isHovering, setIsHovering] = useState(false);
   const auth = getAuth();
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -45,9 +53,9 @@ export default function Header() {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/Contact") && "text-black border-b-red-500"
+                pathMatchRoute("/Contactus") && "text-black border-b-red-500"
               }`}
-              onClick={() => navigate("/Contact")}
+              onClick={() => navigate("/Contactus")}
             >
               Contact Us
             </li>
@@ -69,25 +77,32 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div>
-          <ul className="flex space-x-10">
+        <div >
+          
+          <ul className="flex space-x-10 ">
             <li
-              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+              className={`cursor-pointer py-3 mt-2 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 (pathMatchRoute("/signin") || pathMatchRoute("/profile")) &&
                 "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/profile")}
             >
               {pageState}
-            </li>
-
-            <li
+            
+</li>
+<li
+            
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 pathMatchRoute("/cart") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/cart")}
-            >
-              Cart
+           > 
+           <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+
+           
+              <img src="https://media.istockphoto.com/id/898295684/vector/shopping-cart-icon-silhouette-2.jpg?s=612x612&w=0&k=20&c=lFMSnfCGyDY_75OSYECSZEII1HR3gJ7lum4br6B3VHQ="  class="object-scale-down  w-10   rounded-border-4 border-lime-500 ..." alt="Logo" />
+              </div>
+              {isHovering && <h2> Cart</h2>}
             </li>
           </ul>
         </div>
