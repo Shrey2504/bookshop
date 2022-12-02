@@ -45,11 +45,19 @@ export default function Header() {
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
-                pathMatchRoute("/contactus") && "text-black border-b-red-500"
+                pathMatchRoute("/Contact") && "text-black border-b-red-500"
               }`}
-              onClick={() => navigate("/contactus")}
+              onClick={() => navigate("/Contact")}
             >
               Contact Us
+            </li>
+            <li
+              className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
+                pathMatchRoute("/Payment") && "text-black border-b-red-500"
+              }`}
+              onClick={() => navigate("/Payment")}
+            >
+             Payment
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
