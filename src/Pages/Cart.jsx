@@ -1,90 +1,149 @@
-// import React from 'react'
-// import { getAuth } from "firebase/auth";
 // import { db } from "../firebase";
+// import { getAuth } from "firebase/auth";
+// import { useState,useEffect } from "react";
+// import React from 'react'
 // import {
-//     collection,
-//     getDoc,
-//     getDocs,
-//     limit,
-//     orderBy,
-//     query,
-//     where,
-//   } from "firebase/firestore";
-//   import { useEffect } from "react";
-//   import { useState } from "react";
-//   import { Link } from "react-router-dom";
-//   import ListingItem from "../Components/ListingItem";
+//   collection,
+//   getDoc,
+//   getDocs,
+//   limit,
+//   orderBy,
+//   query,
+//   where,
+// } from "firebase/firestore";
 
+// const Cart = () => {
 //   const auth = getAuth();
-//     const Cart = () => {
+//   const user = auth.currentUser;
 
-//     const [CartListings, setCartListings] = useState(null);
-//     useEffect(() => {
-//       async function fetchListings() {
-//         try {
-//           // get reference
-//           const listingsRef = collection(db, "cart "+auth.currentUser.uid);
-//           // create the query
-//           const q = query(
-//             listingsRef,
-            
-//           );
-//           // execute the query
-//           const querySnap = await getDocs(q);
-//           const listings = [];
-//           querySnap.forEach((doc) => {
-//             return listings.push({
-//               id: doc.id,
-//               data: doc.data(),
-//             });
-//           });
-//           setCartListings(listings);
-//         } catch (error) {
-//           console.log(error);
-//         }
-//       }
-//       fetchListings();
-//     }, []);
+// let userID ="default";
+// if (user) {
+//   userID = user.uid
+//   console.log("userID: " + userID);
+// }
+// const ref = collection(db,"cart "+ userID)
+
+//   const[data,setdata] = useState([])
+//   const[loader,setloader] = useState(true)
+
+//   function getData(){
+
+//   }
 
 //   return (
 //     <div>
 //       Cart
-//       <div className="max-w-6xl mx-auto pt-4 space-y-6">
-//         {CartListings && CartListings.length > 0 && (
-//           <div className="m-2 mb-6">
-//             <h2 className="px-3 text-2xl mt-6 font-semibold">Recent offers</h2>
-//             <Link to="/offers">
-//               <p className="px-3 text-sm text-blue-600 hover:text-blue-800 transition duration-150 ease-in-out">
-//                 Show more offers
-//               </p>
-//             </Link>
-//             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-//               {CartListings.map((listing) => (
-//                 <ListingItem
-//                   key={listing.id}
-//                   listing={listing.data}
-//                   id={listing.id}
-//                 />
-//               ))}
-//             </ul>
-//           </div>
-//         )}
-//         </div>
 //     </div>
 //   )
 // }
 
 // export default Cart
 
-import React from 'react'
+import { getAuth } from "firebase/auth";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import {
+  collection,
+  getDocs,
+  limit,
+  orderBy,
+  query,
+  startAfter,
+  where,
+} from "firebase/firestore";
+import { db } from "../firebase";
+import Spinner from "../Components/Spinner";
+import ListingItem from "../Components/ListingItem"
+import { list } from "firebase/storage";
 
-const Cart = () => {
+export default function Offers() {
+  const [listings, setListings] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [lastFetchedListing, setLastFetchListing] = useState(null);
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  let userID = "default";
+  if (user) {
+    userID = user.uid;
+    // console.log("userID: " + userID);
+  }
+  useEffect(() => {
+    async function fetchListings() {
+      try {
+        const listingRef = collection(db, "listings");
+        
+        const q = query(
+          listingRef,
+          limit(8)
+        );
+        const querySnap = await getDocs(q);
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+        setLastFetchListing(lastVisible);
+        const listings = [];
+        querySnap.forEach((doc) => {
+          return listings.push({
+            id: doc.id,
+            data: doc.data(),
+          
+          });
+        });
+        setListings(listings);
+        setLoading(false);
+      } catch (error) {
+        toast.error("Could not fetch listing");
+      }
+    }
+
+    fetchListings();
+  }, []);
+
+  async function onFetchMoreListings() {
+    try {
+      const listingRef = collection(db, "listings");
+      const q = query(
+        listingRef,
+      );
+      const querySnap = await getDocs(q);
+      const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+      setLastFetchListing(lastVisible);
+      const listings = [];
+      querySnap.forEach((doc) => {
+        return listings.push({
+          id: doc.id,
+          data: doc.data(),
+        });
+      });
+      setListings((prevState) => [...prevState, ...listings]);
+      setLoading(false);
+    } catch (error) {
+      toast.error("Could not fetch listing");
+    }
+  }
+
   return (
-    <div>
-      Cart
+    <div className="max-w-6xl mx-auto px-3">
+      <h1 className="text-3xl text-center mt-6 font-bold mb-6">Your Cart</h1>
+      {loading ? (
+        <Spinner />
+      ) : listings && listings.length > 0 ? (
+        <>
+        {console.log(listings)}
+        <main>
+            <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+              {listings.map((listing) => (
+                <ListingItem
+                  key={listing.id}
+                  id={listing.id}
+                  listing={listing.data}
+                />
+              ))}
+            </ul>
+          </main>
+        </>
+      ) : (
+        <p>No items added in cart</p>
+      )}
     </div>
-  )
+  );
 }
-
-export default Cart
-
