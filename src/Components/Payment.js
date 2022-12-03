@@ -16,7 +16,7 @@ function Payment() {
         token={onToken}
         name= {auth.currentUser.displayName}
         currency ="INR"
-        amount = {Listing.regularPrice}
+        amount = "1000"
         stripeKey="pk_test_51MASWxSAxlAgsURqlwlBr4qTffS5on7ypKksXqOW6TnUmrIXIc9k0LQuZRCS3r98gHrj7TMR4OHAsf9Lpnn08qdn003hrlzfSp"
       />
 
