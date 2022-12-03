@@ -113,12 +113,7 @@ const Contact = () => {
           </button>
         </div>
       </section>
-      <div className="flex justify-center items-center">
-        <strong className="flex pb-4 pt-4 rounded-lg border-4 border-rose-500 font-mono justify-center text-zinc-50 font-bold text-lg items-center bg-slate-900">
-            This is a Bookshop.org website
-            and orders cannot be placed using this website. This website is purely build for educational and practice purposes.
-        </strong>
-    </div>
+
     </>
   );
 };

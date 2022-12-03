@@ -2,7 +2,7 @@ import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import { GiWhiteBook } from "react-icons/gi";
 import { MdEdit } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
+import { FaTrash,FaShoppingCart, } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";
 import { Button } from "@material-tailwind/react";
 import { getAuth } from "firebase/auth";
@@ -11,10 +11,18 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { icon } from "leaflet";
 
 
 export default function ListingItem({ listing, id, onEdit, onDelete }) {
+  const [isHovering, setIsHovering] = useState(false);
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
 
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
   const auth = getAuth();
   const navigate = useNavigate();
   const user = auth.currentUser;
@@ -94,11 +102,16 @@ const userCollectionRef = collection(db, "cart "+ userID);
         )}
         {onEdit && (
           <MdEdit
-            className="absolute bottom-2 right-7 h-4 cursor-pointer "
+            className="absolute bottom-2 right-7 h-[14px] cursor-pointer "
             onClick={() => onEdit(listing.id)}
           />
         )}
-      <Button onClick={handleAddToCart} className="flex items-center whitespace-nowrap text-zinc-900 bg-red-700">Add to cart</Button>
+        <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+        <img src="https://media.istockphoto.com/id/898295684/vector/shopping-cart-icon-silhouette-2.jpg?s=612x612&w=0&k=20&c=lFMSnfCGyDY_75OSYECSZEII1HR3gJ7lum4br6B3VHQ=" onClick={handleAddToCart} class="object-scale-down h-10 w-10 mt-2 mb-2 rounded-border-4 border-lime-500 ..." alt="Logo" />
+        
+        
+        </div>
+        {isHovering && <h3><b>Add to Cart</b> </h3>}
       </li>
     </>
   );
