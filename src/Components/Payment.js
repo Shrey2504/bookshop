@@ -2,6 +2,7 @@ import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import { getAuth, updateProfile } from "firebase/auth";
 import Listing from "../Pages/Listing";
+import cart from "../Pages/Cart";
 
 
 function Payment() {
@@ -16,7 +17,7 @@ function Payment() {
         token={onToken}
         name= {auth.currentUser.displayName}
         currency ="INR"
-        amount = "1000"
+        amount = "1093900"
         stripeKey="pk_test_51MASWxSAxlAgsURqlwlBr4qTffS5on7ypKksXqOW6TnUmrIXIc9k0LQuZRCS3r98gHrj7TMR4OHAsf9Lpnn08qdn003hrlzfSp"
       />
 
@@ -26,6 +27,7 @@ function Payment() {
             This is a Bookshop.org website
             and orders cannot be placed using this website. This website is purely build for educational and practice purposes.
         </strong>
+        
     </div>
  </div>
 }

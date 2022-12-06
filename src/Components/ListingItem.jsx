@@ -107,7 +107,7 @@ const userCollectionRef = collection(db, "cart "+ userID);
           />
         )}
         <div onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
-        <img src="https://media.istockphoto.com/id/898295684/vector/shopping-cart-icon-silhouette-2.jpg?s=612x612&w=0&k=20&c=lFMSnfCGyDY_75OSYECSZEII1HR3gJ7lum4br6B3VHQ=" onClick={handleAddToCart} class="object-scale-down h-10 w-10 mt-2 mb-2 rounded-border-4 border-lime-500 ..." alt="Logo" />
+        <img src="https://media.istockphoto.com/id/898295684/vector/shopping-cart-icon-silhouette-2.jpg?s=612x612&w=0&k=20&c=lFMSnfCGyDY_75OSYECSZEII1HR3gJ7lum4br6B3VHQ=" onClick={handleAddToCart} class="object-scale-down h-10 w-10 mt-2 mb-2 rounded-border-4 border-lime-500 ..." />
         
         
         </div>

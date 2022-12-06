@@ -59,14 +59,14 @@ export default function Header() {
             >
               Contact Us
             </li>
-            <li
+            {/* <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 pathMatchRoute("/Payment") && "text-black border-b-red-500"
               }`}
               onClick={() => navigate("/Payment")}
             >
              Payment
-            </li>
+            </li> */}
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 pathMatchRoute("/offers") && "text-black border-b-red-500"
