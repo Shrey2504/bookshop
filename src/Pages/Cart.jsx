@@ -55,9 +55,10 @@ import { db } from "../firebase";
 import Spinner from "../Components/Spinner";
 import ListingItem from "../Components/ListingItem"
 import { list } from "firebase/storage";
+import Cartltem from "../Components/Cartltem";
 
 export default function Offers() {
-  const [listings, setListings] = useState(null);
+  const [Cartlistings, setCartlistings] = useState(null);
   const [loading, setLoading] = useState(true);
   const [lastFetchedListing, setLastFetchListing] = useState(null);
   const auth = getAuth();
@@ -66,55 +67,55 @@ export default function Offers() {
   let userID = "default";
   if (user) {
     userID = user.uid;
-    // console.log("userID: " + userID);
+    console.log("userID: " + userID);
   }
   useEffect(() => {
-    async function fetchListings() {
+    async function fetchCartlistings() {
       try {
-        const listingRef = collection(db, "listings");
+        const listingRef = collection(db, "cart "+ userID);
         
         const q = query(
           listingRef,
-          limit(8)
+          limit(1000)
         );
         const querySnap = await getDocs(q);
         const lastVisible = querySnap.docs[querySnap.docs.length - 1];
         setLastFetchListing(lastVisible);
-        const listings = [];
+        const Cartlistings = [];
         querySnap.forEach((doc) => {
-          return listings.push({
+          return Cartlistings.push({
             id: doc.id,
             data: doc.data(),
           
           });
         });
-        setListings(listings);
+        setCartlistings(Cartlistings);
         setLoading(false);
       } catch (error) {
         toast.error("Could not fetch listing");
       }
     }
 
-    fetchListings();
+    fetchCartlistings();
   }, []);
 
-  async function onFetchMoreListings() {
+  async function onFetchMoreCartlistings() {
     try {
-      const listingRef = collection(db, "listings");
+      const listingRef = collection(db, "cart "+ userID);
       const q = query(
         listingRef,
       );
       const querySnap = await getDocs(q);
       const lastVisible = querySnap.docs[querySnap.docs.length - 1];
       setLastFetchListing(lastVisible);
-      const listings = [];
+      const Cartlistings = [];
       querySnap.forEach((doc) => {
-        return listings.push({
+        return Cartlistings.push({
           id: doc.id,
           data: doc.data(),
         });
       });
-      setListings((prevState) => [...prevState, ...listings]);
+      setCartlistings((prevState) => [...prevState, ...Cartlistings]);
       setLoading(false);
     } catch (error) {
       toast.error("Could not fetch listing");
@@ -126,13 +127,13 @@ export default function Offers() {
       <h1 className="text-3xl text-center mt-6 font-bold mb-6">Your Cart</h1>
       {loading ? (
         <Spinner />
-      ) : listings && listings.length > 0 ? (
+      ) : Cartlistings && Cartlistings.length > 0 ? (
         <>
-        {console.log(listings)}
+        {console.log(Cartlistings)}
         <main>
             <ul className="sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-              {listings.map((listing) => (
-                <ListingItem
+              {Cartlistings.map((listing) => (
+                <Cartltem
                   key={listing.id}
                   id={listing.id}
                   listing={listing.data}
@@ -140,6 +141,7 @@ export default function Offers() {
               ))}
             </ul>
           </main>
+          
         </>
       ) : (
         <p>No items added in cart</p>
