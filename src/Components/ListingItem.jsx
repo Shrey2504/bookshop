@@ -42,7 +42,7 @@ const userCollectionRef = collection(db, "cart "+ userID);
         price : listing.discountedPrice ? listing.discountedPrice: listing.regularPrice,
         book_image: listing.imgUrls
       }).then(() => { 
-         toast.success("Books Added Successfully!"); 
+         toast.success("Added to Cart!"); 
       },[auth.currentUser.uid])
       .catch((error) => {
         toast.error("Error Occured: " + error.message);
@@ -54,7 +54,7 @@ const userCollectionRef = collection(db, "cart "+ userID);
       <li className="relative bg-white flex flex-col justify-between items-center shadow-md hover:shadow-xl rounded-md overflow-hidden transition-shadow duration-150 m-[10px]">
         <Link className="contents" to={`/category/${listing.name}/${id}`}>
           <img
-            className="h-[180px] w-full object-cover hover:scale-105 transition-scale duration-200 ease-in"
+            className="h-[290px] w-full object-cover hover:scale-105 transition-scale duration-200 ease-in"
             loading="lazy"
             src={listing.imgUrls[0]}
           />
