@@ -20,6 +20,7 @@ import { db } from "../firebase";
 import Spinner from "../Components/Spinner";
 import ListingItem from "../Components/ListingItem"
 import { list } from "firebase/storage";
+import Payment  from "../Components/Payment";
 
 
 export default function Cart() {
@@ -29,6 +30,8 @@ export default function Cart() {
   const [lastFetchedListing, setLastFetchListing] = useState(null);
   const auth = getAuth();
   const user = auth.currentUser;
+  
+  
 
   let userID = "default";
   if (user) {
@@ -128,7 +131,6 @@ export default function Cart() {
 let total_amount = 0;
   return (
     <>
-    
     <div className="max-w-6xl mx-auto px-3">
       <h1 className="text-3xl text-center mt-6 font-bold mb-6">Your Cart</h1>
       {loading ? (
@@ -220,5 +222,6 @@ let total_amount = 0;
     </div>
     
     </>
+    
   );
 }

@@ -43,8 +43,8 @@ export default function Listing() {
   return (
     <>
     <main>
-    <div class="grid grid-flow-row-max gap-x-15 gap-y-4 grid-cols-3 grid-rows-max  pr-2 pl-2  ">
-    <div class="col-span-8 ">
+    <div className="grid grid-flow-row-max gap-x-15 gap-y-4 grid-cols-3 grid-rows-max  pr-2 pl-2  ">
+    <div className="col-span-8 ">
       <Swiper 
         slidesPerView={1}
         navigation
