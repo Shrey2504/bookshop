@@ -63,8 +63,14 @@ export default function Slider() {
                 style={{
                    
                   background: `url(${data.imgUrls[0]})  ,no-repeat`,
-                  alignContent:"center",
-                  backgroundSize: "cover",
+                  
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                  width: '100vw',
+                  height: '100vh'
+                  
+                  
                 }}
 
                 
